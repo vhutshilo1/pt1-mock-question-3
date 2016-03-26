@@ -17,11 +17,52 @@ using namespace std;
 //     either order) and return a fraction.  
 // 3.3 create a driver program to test your overloaded > operators and your overloaded 
 
-class Fraction {
+#include<iostream>
+using namespace std;
+//class definition
+class Fraction
+{
 private:
-	int num;				// numerator;
-	int denom;				// denominator;
+
+	int num;
+	int denom;
+
 public:
-	Fraction(int n, int d) : num(n), denum(d) { };
-	void print() { cout << num << "/" << denom; };
+
+	Fraction() {};
+	Fraction(int n, int d) :num(n),denom(d) {};
+	void print() { cout <<num<< "/" << denom; };
+	friend bool operator>(const Fraction& fracObj1,const Fraction& fracObj2);//function delclaration
+	//Function overloading add()
+	/*Fraction add(int iNum, Fraction fracNum)
+	{
+		Fraction sum;
+		sum =iNum + fracNum;
+	}*/
+
+
 };
+
+bool operator>(const Fraction& frac1, const Fraction& frac2)
+{
+	bool result;
+	Fraction fracObj1, fracObj2;
+	result = ((fracObj1.num / fracObj1.denom) > (fracObj2.num / fracObj2.denom));
+	return result;
+
+}
+//Driver Program
+int main()
+{
+	Fraction fract1(1,4), fract2(1,2);
+	if (fract1 > fract2)
+	{
+		cout << "No it's a lie\n" << endl;
+	}
+	else
+		cout << "Yes";
+
+
+	return 0;
+
+}
